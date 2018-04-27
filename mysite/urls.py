@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('bforum.urls')),
+    url(r'^forum/accounts/login/$', views.login, name='login'),
+    # url(r'^accounts/create_user/$', views.create_user, name='create_user'),
+    url(r'^forum/accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/forum/'}),
+    url(r'^forum/', include('bforum.urls')),
+    url(r'', include('evasion.urls'))
+
 ]

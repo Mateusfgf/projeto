@@ -1,0 +1,71 @@
+
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Forum de Evasão Escolar</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/bforum.css' %}">
+
+    </head>
+    <body>
+        <div class="page-header">
+            
+            {% if user.is_authenticated %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="/forum/">Bem Vindos ao Forum</a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li><a href="{% url 'post_new' %}" class="button">Novo Post</a></li>
+                  <li><a href="{% url 'post_draft_list' %}" class="button">Aprovar post</a></li>    
+                  <li><a href="{% url 'contato' %}" class="button">Contato</a></li>              
+                  <li><a href="{% url 'logout' %}" class="button">Logout</a></li>
+                  <p class="Hello">{{ user.username }}</p>
+                  
+                </ul>
+              </div>
+            </nav>
+                
+
+            {% else %}
+                <nav class="navbar navbar-default">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="/forum/">Bem Vindos ao Forum</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                      <li><a href="{% url 'login' %}" class="button">Login</a></li>
+                      <li><a href="{% url 'contato' %}" class="button">Contato</a></li>
+
+                    </ul>
+                  </div>
+                </nav>
+
+            {% endif %}
+
+        </div>
+        
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+            </div>
+        </div>
+    </div>
+      <footer>
+      <br><br><br><br>
+        <a class="post" href="/">Site com os dados</a><br>
+          <br><br><p>Criado por Mateus Medeiros</p>
+           Aula de Programação para Internet II</a>.</p>
+      </footer>
+    </body>
+
+</html>
+

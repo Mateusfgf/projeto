@@ -1,0 +1,56 @@
+{% extends 'bforum/base.html'%}
+
+{% block content%}
+ <div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+                <div class="post">
+
+                    {% if user.is_authenticated %}
+                     <h1><a href="{% url 'post_detail' pk=post.pk%}">{{ post.title }}</a></h1>
+                    {% endif %}
+
+                        {% if post.published_date %}
+                            <div class="date">
+                                {{ post.published_date }}
+                            </div>
+                        {% else %}
+                            <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+                            <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                        {% endif %}
+
+                    
+                     <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                        <h5>Visitado {{post.visits}}</h5>
+                    </div>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+        </div>
+    </div>
+</div>
+
+<h4>Comentarios</h4><br>
+
+{% for comment in post.comments.all %}
+    {% if user.is_authenticated or comment.approved_comment %}
+    <div class="comment">
+        <div class="date">
+            {{ comment.created_date }}
+            {% if not comment.approved_comment %}
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+            {% endif %}
+        </div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+    {% endif %}
+{% empty %}
+    <p>Ainda não possui comentário</p>
+{% endfor %}
+<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Comentar</a>
+<br><br><br><br><br><br>
+{%endblock%}
+
+

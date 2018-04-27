@@ -1,0 +1,38 @@
+{% extends 'evasion/base.html'%}
+
+{% block content%}
+
+    <h3>Insira seu nome</h3>
+    <form class="form-inline" action="/">
+      <div class="form-group">
+        <label class="sr-only" for="email">Email address:</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+    <br><br>
+      <div class="form-group">
+        <label for="email">Seu e-mail:</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+     
+    
+
+    <h3>Marque a opção caso seja verdadeira<br><br>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Você Possui Curso Superior?</label>
+    </div>
+    <br><br>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Você Possui Curso Tecnico?</label>
+    </div>
+    <br><br>
+    <div class="checkbox">
+      <label><input type="checkbox" value="" disabled>Já Desistiu de algum curso?</label>
+    </div>
+    <br><br>
+
+     <button type="submit" class="btn btn-default">Enviar</button>
+    </form>
+
+{% endblock %}
+
+

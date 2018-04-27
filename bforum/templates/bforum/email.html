@@ -1,0 +1,16 @@
+{% extends 'bforum/base.html' %}
+}
+{% block content %}
+
+
+	<h1>Entre em contato</h1>
+    <div class="post">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+              <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

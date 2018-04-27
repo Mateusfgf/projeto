@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    {% if form.errors %}
+        <p>Usuario ou senha pode estar errados, verifique e tente novamente.</p>
+    {% endif %}
+
+    <form method="GET" action="{% url 'create_user' %}">
+    {% csrf_token %}
+        <table>
+        <tr>
+            <td> USUARIO: </td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td> SENHA: </td>
+            <td>{{ form.password }}</td>
+        </tr>
+        </table>
+
+        <input type="submit" value="LOGAR" /></br>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+{% endblock %}

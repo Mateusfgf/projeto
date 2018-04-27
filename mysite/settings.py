@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bforum',
+    'evasion',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -124,3 +125,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ALLOWED_HOSTS = ['127.0.0.1', 'projetoMateus.pythonanywhere.com']
 
 TIME_ZONE = 'America/Sao_Paulo'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mateusowmedeiros@gmail.com' 
+EMAIL_HOST_PASSWORD = 'ykzdsembpqnmzidr'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+LOGIN_REDIRECT_URL = '/forum/'
