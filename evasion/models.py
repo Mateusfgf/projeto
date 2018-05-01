@@ -6,7 +6,7 @@ from django.utils import timezone
 class Aluno(models.Model):
 
     nome = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    idade = models.IntegerField(default=0)
+    idade = models.IntegerField()
     curso = models.CharField(max_length=200)
     renda = models.CharField(max_length=200)
     residencia = models.TextField()
@@ -41,3 +41,21 @@ class Tecnico_fazendo_graducacao(models.Model):
     fim_curso = models.IntegerField(default=0)
     data_resposta = models.DateTimeField(
             default=timezone.now)
+
+class Inscricao(models.Model):
+    nome = models.CharField(max_length=100)
+    cpf = models.CharField('CPF', max_length=11, unique = True)
+    idade = models.IntegerField()
+    email = models.EmailField(unique=True)
+    telefone = models.CharField(max_length=20, blank=True)
+    criado_em = models.DateTimeField('criado em', auto_now_add=True)
+    Tem_curso_tecnico = models.BooleanField()
+
+    class Meta:
+        ordering = ['criado_em']
+        verbose_name = (u'nome')
+        verbose_name_plural = (u'nomes')
+
+    def __unicode__(self):
+        return self.nome
+

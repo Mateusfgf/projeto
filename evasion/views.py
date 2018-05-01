@@ -1,13 +1,32 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils import timezone
-from .models import Aluno
-# from .forms import AlunoForm, CommentForm, ContatoForm
+from django.views.generic import CreateView, ListView
+from django.core.urlresolvers import reverse_lazy
+
+from evasion.models import Inscricao, Aluno
+from evasion.forms import InscricaoForm
+
+
+
+def home(request):
+        return render(request,'pagina_inicial.html')
+
+class Criar(CreateView):
+        template_name = 'evasion/cadastro.html'
+        fields = '__all__'
+        model = Inscricao
+        success_url = reverse_lazy('lista')
+
+class Lista(ListView):
+        template_name = 'evasion/lista.html'
+        model = Inscricao
+        context_object = 'nome'
 
 
 def listar_dados(request):
-	    posts = Aluno.objects.filter(data_resposta__lte=timezone.now()).order_by('data_resposta')
-	    return render(request, 'evasion/pagina_inicial.html', {'posts': posts})
+	    # posts = Aluno.objects.filter(data_resposta__lte=timezone.now()).order_by('data_resposta')
+	    # return render(request, 'evasion/pagina_inicial.html', {'posts': posts})
 
+		return render(request, 'evasion/pagina_inicial.html')
 
 def listar_graficos(request):
 	    post = get_object_or_404(Aluno, pk=pk)

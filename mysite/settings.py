@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bforum',
     'evasion',
+
 ]
 
 MIDDLEWARE_CLASSES = [
