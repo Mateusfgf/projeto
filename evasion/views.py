@@ -38,6 +38,33 @@ def formulario_usuario(request):
 	return render(request, 'evasion/formulario_usuario.html')
 
 
+def events(request):
+    try:
+        post_json = {
+            'id': 1,
+            'description': "Com nove anos de eventos, a Campus Party reúne mais de 8.000 participantes, sendo considerado o maior evento de tecnologia do mundo.",
+            'contactInfo': "Em caso de duvidas, entre em contato com informatica@ifsc.edu.br",
+        }
+    except ObjectDoesNotExist:
+        post_json = {'status': 0}
+    return JsonResponse(post_json)
+
+def talks(request):
+    try:
+        post_json = {
+            'name': "HACKATHON",
+            'eventId': 1,
+            'day': "05/10",
+            'speaker': "Programadores, designers, profissionais da comunicacao",
+            'time': "20h30",            
+        }
+    except ObjectDoesNotExist:
+        post_json = {'status': 0}
+    return JsonResponse(post_json)
+
+
+
+
 
 # def events(request):
 
@@ -69,32 +96,6 @@ def formulario_usuario(request):
 #     { "id": 14, "name": "Informática 12", "eventId": 3, "day":"07/10",  "speaker": "Palestrante 12 Informática", "time": "19h00" }
 #   ]
 # }
-
-def events(request):
-    try:
-        post_json = {
-            'status': 1,
-            'id': 1,
-            'description': "Com nove anos de eventos, a Campus Party reúne mais de 8.000 participantes, sendo considerado o maior evento de tecnologia do mundo.",
-            'contactInfo': "Em caso de dúvidas, entre em contato com informatica@ifsc.edu.br",
-        }
-    except ObjectDoesNotExist:
-        post_json = {'status': 0}
-    return JsonResponse(post_json)
-
-def talks(request):
-    try:
-        post_json = {
-            'status': 1,
-            'name': "HACKATHON",
-            'eventId': 1,
-            'day': "05/10",
-            'speaker': "Programadores, designers, profissionais da comunicacao",
-            'time': "20h30",            
-        }
-    except ObjectDoesNotExist:
-        post_json = {'status': 0}
-    return JsonResponse(post_json)
 
 
 
