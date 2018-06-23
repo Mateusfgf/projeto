@@ -82,6 +82,19 @@ def events(request):
         post_json = {'status': 0}
     return JsonResponse(post_json)
 
+def talks(request):
+    try:
+        post_json = {
+            'status': 1,
+            'name': "HACKATHON",
+            'eventId': 1,
+            'day': "05/10",
+            'speaker': "Programadores, designers, profissionais da comunicacao",
+            'time': "20h30",            
+        }
+    except ObjectDoesNotExist:
+        post_json = {'status': 0}
+    return JsonResponse(post_json)
 
 
 
