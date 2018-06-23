@@ -1,8 +1,7 @@
 {% extends 'evasion/base.html'%}
 
 {% block content %}
-        <form class="form-inline" action=""  method="POST">
-        		Tem_curso_tecnico = forms.BooleanField()
+        <form class="formulario" action=""  method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Criar</button>

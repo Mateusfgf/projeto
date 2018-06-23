@@ -21,7 +21,7 @@ class InscricaoForm(forms.Form):
 	class Meta:
 
 		model = Inscricao
-		Tem_curso_tecnico = forms.BooleanField()
+
 
 
 

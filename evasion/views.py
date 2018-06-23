@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, ListView
 from django.core.urlresolvers import reverse_lazy
+# from django.HttpResponseRedirect import JsonRespnse
 
 from evasion.models import Inscricao, Aluno
 from evasion.forms import InscricaoForm
@@ -36,6 +37,26 @@ def listar_graficos(request):
 def formulario_usuario(request):
 	return render(request, 'evasion/formulario_usuario.html')
 
+
+
+
+
+ # class json(View):
+ # 	def get(self, request, nome):
+ # 		vagabundo = self.hamming(nome, 'wesley')
+ # 		anjo = 100 - vagabundo
+
+ # 		if nome.upper() != 'wesley'.upper():
+ # 			anjo, vagabundo = vagabundo, anjo
+
+ # 		data = {
+ # 			'nome': nome,
+ # 			'anjo': anjo,
+ # 			'vagabundo': vagabundo
+
+
+ # 		}
+ # 		return JsonRespnse(data)
 
 
 
